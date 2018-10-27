@@ -20,9 +20,8 @@ sudo ansible-galaxy install bertvv.samba
 title "Finish setting up shell"
 zsh -i -c setupsolarized dircolors.256dark
 
-title "Provision CHIE for $(whoami)"
-sudo ansible-playbook -i "localhost," -c local playbooks/01_initial.ansible-playbook.yml
-sudo ansible-playbook -i "localhost," -c local playbooks/02_docker.ansible-playbook.yml
-sudo ansible-playbook -i "localhost," -c local playbooks/03_mail.ansible-playbook.yml
-sudo ansible-playbook -i "localhost," -c local playbooks/04_samba.ansible-playbook.yml
-
+export PLAYBOOKS_SRC=playbooks
+title "Run all numbered playbooks for $(whoami)"
+for playbook in `ls $PLAYBOOKS_SRC/*.ansible-playbook.yml | egrep "^$PLAYBOOKS_SRC/[0-9]" | sort -V`; do 
+    sudo ansible-playbook -i "localhost," -c local $playbook
+done;
