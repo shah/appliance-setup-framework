@@ -33,37 +33,32 @@ Install the following core utilities:
     sudo apt update
     sudo apt install openssh-server net-tools curl wget git -y
 
-## Download the core software and prepare for containers
+## Download the ASF core
 
     sudo git clone --recurse https://github.com/shah/appliance-setup-framework /etc/appliance-setup-framework
 
-## Setup your account-specific appliance variables
+## Setup your specific appliance variables
 
-As the *admin user*:
+Login as the *admin user*, and then:
 
     cd /etc/appliance-setup-framework/conf
     sudo cp appliance.secrets.conf-tmpl.yml appliance.secrets.conf.yml
     sudo vi appliance.secrets.conf.yml
 
-Now enter all the secrets variables based on instructions provided. Once you've done that, the /etc/appliance-setup-framework/conf will look something like this:
-
-    > ls -al /etc/appliance-setup-framework/conf
-    drwxr-xr-x 1 appliance appliance  512 Oct 22 13:41 .
-    drwxr-xr-x 1 appliance appliance  512 Oct 22 13:44 ..
-    -rwxr--r-- 1 appliance appliance 1388 Oct 22 13:15 appliance.common.conf.yml
-    -rwxr--r-- 1 appliance appliance  230 Oct 22 13:14 appliance.secrets.conf-tmpl.yml
-    -rwxr--r-- 1 appliance appliance  213 Oct 22 13:14 appliance.secrets.conf.yml
-
 The **appliance.secrets.conf-tmpl.yml** file is a template (sample), and the **appliance.secrets.conf.yml** is what will be used by the Ansible and related setup utilities.
 
-## Setup the core software and prepare for containers
+## Setup the core software and prepare to run Ansible playbooks
 
     cd /etc/appliance-setup-framework 
     bash bin/bootstrap.sh
 
 After bootstrap.sh is complete, exit the shell and restart it.
 
-Once you've logged in again as *admin user*, resume the setup:
+## Load your custom playbooks
+
+Login as the *admin user*. If you have any custom playbooks, add them to /etc/appliance-setup-framework/playbooks. The bin/setup.sh utility will run all numbered playbooks in numerical order. 
+
+Resume the setup:
 
     cd /etc/appliance-setup-framework 
     bash bin/setup.sh
@@ -71,4 +66,3 @@ Once you've logged in again as *admin user*, resume the setup:
 After setup is completed, reboot the server (Docker setup will be incomplete without a reboot):
 
     sudo reboot
-
