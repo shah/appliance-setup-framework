@@ -1,0 +1,8 @@
+---
+- hosts: all
+  vars:
+    zsh_antigen_bundles_extras:
+    - colored-man-pages
+    - joel-porquet/zsh-dircolors-solarized.git
+  roles:
+    - viasite-ansible.zsh

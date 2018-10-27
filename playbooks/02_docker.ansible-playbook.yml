@@ -1,0 +1,49 @@
+---
+- name: Appliance Docker
+  hosts: all
+  vars_files:
+    - ../conf/appliance.secrets.conf.yml
+    - ../conf/appliance.common.conf.yml
+  roles:
+    - geerlingguy.docker
+  tasks:
+    - name: Download Python docker SDK
+      pip:
+        name: docker
+
+    - name: Download ctop
+      file: state=link src={{appliance_setup_path}}/bin/ctop-v0.7.1 dest=/usr/bin/ctop mode=a+x force=yes
+
+    - name: Open Docker daemon, HTTP(S), and Swarm ports
+      ufw: >
+        rule=allow
+        port={{ item }}
+        proto=tcp
+      with_items:
+        - 80     # Default HTTP port
+        - 443    # Default HTTPS port
+        - 2376   # Docker daemon API port
+        - 3376   # Swarm API port
+        - 7946   # Serf port (libnetwork)
+     
+    - name: Open VXLAN and Serf UDP ports
+      ufw: >
+        rule=allow
+        port={{ item }}
+        proto=udp
+      with_items:
+        - 7946 # Serf
+        - 4789 # VXLAN
+
+    - name: Setup the default docker network
+      docker_network:
+        name: appliance
+
+    - name: Download Container Configuration Framework (CCF) installer
+      get_url: url=https://raw.githubusercontent.com/shah/container-config-framework/master/bin/setup-CCF.sh dest=/tmp/setup-CCF.sh mode=a+x
+
+    - name: Execute the CCF installer
+      shell: /tmp/setup-CCF.sh
+
+    - name: Remove the CCF installer
+      file: path=/tmp/setup-CCF.sh state=absent

@@ -1,0 +1,20 @@
+---
+- name: Appliance Samba
+  hosts: all
+  vars_files:
+    - ../conf/appliance.secrets.conf.yml
+    - ../conf/appliance.common.conf.yml
+    
+  roles:
+    - bertvv.samba
+
+  post_tasks:
+    - name: Open Samba ports
+      ufw: >
+        rule=allow
+        port={{ item }}
+        proto=tcp
+      with_items:
+        - 139
+        - 445
+        
