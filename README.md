@@ -54,7 +54,7 @@ The **appliance.secrets.conf-tmpl.yml** file is a template (sample), and the **a
 
 After bootstrap.sh is complete, exit the shell and restart it.
 
-## Load your custom playbooks
+## Run all standard (any any custom) playbooks
 
 Login as the *admin user*. If you have any custom playbooks, add them to /etc/appliance-setup-framework/playbooks. The bin/setup.sh utility will run all numbered playbooks in numerical order. 
 
