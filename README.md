@@ -9,7 +9,7 @@ Setup a Windows Hyper-V, VMware, VirtualBox, or other hypervisor VM:
 * RAM: minimum 2048  megabytes, preferably **4096 megabytes**
 * Storage: minimum 32 gigabytes, preferably **256 gigabytes**
 * Network: **Accessible outbound to the Internet** (both IPv4 and IPv6), inbound access not required
-* Firewall Route: The publically accessible IP should point to this server, a Linux firewall is automatically managed by CHIE
+* Firewall Route: The publically accessible IP should point to this server, a Linux firewall is automatically managed by the appliance
 
 ## Setup the operating system
 
@@ -33,7 +33,7 @@ Install the following core utilities:
     sudo apt update
     sudo apt install openssh-server net-tools curl wget git -y
 
-## Download the core software and prepare for CHIE containers
+## Download the core software and prepare for containers
 
     sudo git clone --recurse https://github.com/shah/appliance-setup-framework /etc/appliance-setup-framework
 
@@ -45,7 +45,7 @@ As the *admin user*:
     sudo cp appliance.secrets.conf-tmpl.yml appliance.secrets.conf.yml
     sudo vi appliance.secrets.conf.yml
 
-Now enter all the secrets variables based on instructions provided. Once you've done that, the /etc/citus-health-integration-engine/conf will look something like this:
+Now enter all the secrets variables based on instructions provided. Once you've done that, the /etc/appliance-setup-framework/conf will look something like this:
 
     > ls -al /etc/appliance-setup-framework/conf
     drwxr-xr-x 1 appliance appliance  512 Oct 22 13:41 .
