@@ -18,8 +18,8 @@ samba_log_level: '3 passdb:5 auth:10 winbind:2 '
 samba_shares:
   - name: "{{ appliance_admin_user }}_home"
     comment: "{{ appliance_admin_user }} Home Folder"
-    path: /home/{{ appliance_admin_user }}
-    owner: {{ appliance_admin_user }}
+    path: "/home/{{ appliance_admin_user }}"
+    owner: "{{ appliance_admin_user }}"
     browseable: yes
     read_only: no
     guest_ok: no
