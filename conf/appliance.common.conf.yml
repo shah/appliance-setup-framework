@@ -23,5 +23,5 @@ samba_shares:
     browseable: yes
     read_only: no
     guest_ok: no
-    write_list: "{{ ansible_hostname }}"
-    group: "{{ ansible_hostname }}"
+    write_list: "{{ appliance_admin_user }}"
+    group: "{{ appliance_admin_user }}"
