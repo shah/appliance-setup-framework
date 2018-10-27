@@ -6,7 +6,7 @@ docker_users: ["{{ appliance_admin_user }}"]
 samba_netbios_name: "{{ ansible_hostname }}"
 samba_workgroup: "{{ appliance_type }}"
 
-samba_load_homes: true
+samba_load_homes: false
 samba_load_printers: false
 samba_create_varwww_symlinks: false
 
@@ -15,3 +15,13 @@ samba_log: /var/log/samba.log
 samba_log_size: 60000
 samba_log_level: '3 passdb:5 auth:10 winbind:2 '
 
+samba_shares:
+  - name: "{{ appliance_admin_user }}_home"
+    comment: "{{ appliance_admin_user }} Home Folder"
+    path: /home/{{ appliance_admin_user }}
+    owner: {{ appliance_admin_user }}
+    browseable: yes
+    read_only: no
+    guest_ok: no
+    write_list: "{{ ansible_hostname }}"
+    group: "{{ ansible_hostname }}"
