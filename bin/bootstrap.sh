@@ -14,6 +14,7 @@ sudo apt-get install -y curl wget ansible git make python-pip
 
 title "Install Ansible Run Analysis (ARA)"
 pip install ara
+source <(python -m ara.setup.env)
 
 title "Install roles from Ansible Galaxy"
 sudo ansible-galaxy install viasite-ansible.zsh --force
