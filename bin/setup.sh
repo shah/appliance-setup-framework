@@ -12,6 +12,10 @@ sudo add-apt-repository 'deb [arch=amd64] https://pkg.osquery.io/deb deb main'
 sudo apt-get update
 sudo apt-get install -y osquery
 
+title "Setup ARA recording"
+python -m ara.setup.env
+source <(python -m ara.setup.env) 
+
 title "Install roles from Ansible Galaxy"
 sudo ansible-galaxy install geerlingguy.docker
 sudo ansible-galaxy install geerlingguy.postfix
