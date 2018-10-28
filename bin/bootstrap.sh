@@ -12,12 +12,9 @@ sudo add-apt-repository universe
 sudo apt-get update
 sudo apt-get install -y curl wget ansible git make python-pip
 
-title "Install Ansible Run Analysis (ARA)"
-pip install ara
-source <(python -m ara.setup.env)
-
 title "Install roles from Ansible Galaxy"
-sudo ansible-galaxy install viasite-ansible.zsh --force
+sudo ansible-galaxy install viasite-ansible.zsh
+sudo ansible-galaxy install robertdebock.ara
 
 title "Provision ZSH setup playbook for $(whoami)"
 sudo ansible-playbook -i "localhost," -c local playbooks/zsh.ansible-playbook.yml --extra-vars="zsh_user=$(whoami)"
