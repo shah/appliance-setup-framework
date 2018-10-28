@@ -21,46 +21,38 @@ First, install Ubuntu 18.04.1 LTS or above *minimal server* on your preferred hy
 * Default User Password: **adminDefault!**
 * Disk Partitioning: **Guided - use entire disk**
 * PAM Configuration: **Install security updates automatically**
+* Software Packages: *OpenSSH is the only package that must be installed by default*
 
 NOTE: the user you create is called the *admin user* below. 
 
 ## Prepare your appliance for software
 
-After installation is completed, log into the server as the *admin user* (see above).
+After Ubuntu operating system installation is completed, log into the server as the *admin user* (see above).
 
 Install the following core utilities:
 
-    sudo apt update
-    sudo apt install openssh-server net-tools curl wget git -y
+    sudo apt update && sudo apt install net-tools curl -y
 
-## Download the ASF core
+## Bootstrap the appliance
 
-    sudo git clone --recurse https://github.com/shah/appliance-setup-framework /etc/appliance-setup-framework
+    curl https://raw.githubusercontent.com/shah/appliance-setup-framework/master/bin/bootstrap.sh | bash
 
-## Setup your specific appliance variables
+After bootstrap.sh is complete, exit the shell.
 
-Login as the *admin user*, and then:
+## Review your specific appliance variables
+
+Login as the *admin user* and review the appliance.secrets.conf.yml file to customize it for your installation. 
 
     cd /etc/appliance-setup-framework/conf
-    sudo cp appliance.secrets.conf-tmpl.yml appliance.secrets.conf.yml
     sudo vi appliance.secrets.conf.yml
 
 The **appliance.secrets.conf-tmpl.yml** file is a template (sample), and the **appliance.secrets.conf.yml** is what will be used by the Ansible and related setup utilities.
 
-## Setup the core software and prepare to run Ansible playbooks
-
-    cd /etc/appliance-setup-framework 
-    bash bin/bootstrap.sh
-
-After bootstrap.sh is complete, exit the shell and restart it.
-
-## Run all standard (any any custom) playbooks
-
-Login as the *admin user*. If you have any custom playbooks, add them to /etc/appliance-setup-framework/playbooks. The bin/setup.sh utility will run all numbered playbooks in numerical order. 
+If you have any custom playbooks, add them to /etc/appliance-setup-framework/playbooks. The bin/setup.sh utility will run all numbered playbooks in numerical order. 
 
 Resume the setup:
 
-    cd /etc/appliance-setup-framework 
+    cd /etc/appliance-setup-framework
     bash bin/setup.sh
 
 After setup is completed, reboot the server (Docker setup will be incomplete without a reboot):
