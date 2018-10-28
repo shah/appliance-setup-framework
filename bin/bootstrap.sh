@@ -24,7 +24,7 @@ title "Prepare appliance secrets configuration"
 sudo cp $ASF_HOME/conf/appliance.secrets.conf-tmpl.yml $ASF_HOME/conf/appliance.secrets.conf.yml
 
 title "Provision ARA setup playbook"
-sudo ansible-playbook -i "localhost," -c local playbooks/ara.ansible-playbook.yml
+sudo ansible-playbook -i "localhost," -c local $ASF_HOME/playbooks/ara.ansible-playbook.yml
 
 title "Provision ZSH setup playbook for $(whoami)"
-sudo ansible-playbook -i "localhost," -c local playbooks/zsh.ansible-playbook.yml --extra-vars="zsh_user=$(whoami)"
+sudo ansible-playbook -i "localhost," -c local $ASF_HOME/playbooks/zsh.ansible-playbook.yml --extra-vars="zsh_user=$(whoami)"
