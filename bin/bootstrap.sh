@@ -28,3 +28,10 @@ sudo ansible-playbook -i "localhost," -c local $ASF_HOME/playbooks/ara.ansible-p
 
 title "Provision ZSH setup playbook for $(whoami)"
 sudo ansible-playbook -i "localhost," -c local $ASF_HOME/playbooks/zsh.ansible-playbook.yml --extra-vars="zsh_user=$(whoami)"
+
+echo "****************************************************"
+echo "** ASF boostrapping process is complete.          **"
+echo "** ---------------------------------------------- **"
+echo "** Exit the shell, then log back in to continue   **"
+echo "** the appliance setup process.                   **"
+echo "****************************************************"
