@@ -16,5 +16,8 @@ title "Install roles from Ansible Galaxy"
 sudo ansible-galaxy install viasite-ansible.zsh
 sudo ansible-galaxy install robertdebock.ara
 
+title "Provision ARA setup playbook"
+sudo ansible-playbook -i "localhost," -c local playbooks/ara.ansible-playbook.yml
+
 title "Provision ZSH setup playbook for $(whoami)"
 sudo ansible-playbook -i "localhost," -c local playbooks/zsh.ansible-playbook.yml --extra-vars="zsh_user=$(whoami)"
