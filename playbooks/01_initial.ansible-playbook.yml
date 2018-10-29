@@ -10,8 +10,11 @@
         name: ['htop', 'tree', 'jq', 'fail2ban', 'vim', 'mosh', 'ufw', 'prometheus-node-exporter', 'python-pip', 'inetutils-traceroute']
         update_cache: yes
 
-    - name: Download jsonnet
+    - name: Install jsonnet
       file: state=link src={{appliance_setup_path}}/bin/jsonnet-v0.11.2 dest=/usr/bin/jsonnet mode=a+x force=yes
+
+    - name: Install Prometheus osquery_exporter
+      file: state=link src={{appliance_setup_path}}/bin/prometheus-osquery-exporter-vHEAD,f719795,Jan2017 dest=/usr/bin/prometheus-osquery-exporter mode=a+x force=yes
 
     - name: Get useful .vimrc for admin user
       get_url: url=https://raw.githubusercontent.com/amix/vimrc/master/vimrcs/basic.vim dest=/home/{{ appliance_admin_user }}/.vimrc
