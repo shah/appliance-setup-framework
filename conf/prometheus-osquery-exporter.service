@@ -1,0 +1,13 @@
+[Unit]
+Description=prometheus-osquery-exporter
+ConditionPathExists=/usr/bin/prometheus-osquery-exporter
+ConditionPathExists=/etc/appliance-setup-framework/conf/prometheus-osquery-exporter-config.yaml
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=5s
+ExecStart=/usr/bin/prometheus-osquery-exporter --config.file=/etc/appliance-setup-framework/conf/prometheus-osquery-exporter-config.yaml
+
+[Install]
+WantedBy=multi-user.target
