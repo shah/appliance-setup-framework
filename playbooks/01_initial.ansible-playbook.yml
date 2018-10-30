@@ -13,8 +13,19 @@
     - name: Install jsonnet
       file: state=link src={{appliance_setup_path}}/bin/jsonnet-v0.11.2 dest=/usr/bin/jsonnet mode=a+x force=yes
 
-    - name: Install Prometheus osquery_exporter
+    - name: Install Prometheus osquery_exporter binary
       file: state=link src={{appliance_setup_path}}/bin/prometheus-osquery-exporter-vHEAD,f719795,Jan2017 dest=/usr/bin/prometheus-osquery-exporter mode=a+x force=yes
+
+    - name: Install Prometheus osquery_exporter systemd service
+      copy: 
+        src: ../conf/prometheus-osquery-exporter.service
+        dest: /etc/systemd/system/prometheus-osquery-exporter.service
+
+    - name: Enable prometheus-osquery-exporter service and make sure it's running
+      systemd:
+        name:  prometheus-osquery-exporter
+        enabled: yes
+        state: started
 
     - name: Get useful .vimrc for admin user
       get_url: url=https://raw.githubusercontent.com/amix/vimrc/master/vimrcs/basic.vim dest=/home/{{ appliance_admin_user }}/.vimrc
