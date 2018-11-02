@@ -14,7 +14,6 @@ sudo apt-get install -y osquery
 
 title "Install roles from Ansible Galaxy"
 sudo ansible-galaxy install geerlingguy.docker
-sudo ansible-galaxy install geerlingguy.postfix
 sudo ansible-galaxy install bertvv.samba
 
 title "Finish setting up shell"

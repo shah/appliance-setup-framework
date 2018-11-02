@@ -1,0 +1,20 @@
+SMARTHOST {{ dragonfly_mta_smarthost }}
+{% if dragonfly_mta_port %}
+PORT {{ dragonfly_mta_port }}
+{% endif %}
+{% if dragonfly_mta_securetransfer %}
+SECURETRANSFER
+{% endif %}
+{% if dragonfly_mta_user or dragonfly_mta_password %}
+AUTHPATH /etc/dma/auth.conf
+{% endif %}
+{% if dragonfly_mta_starttls %}
+STARTTLS
+{% endif %}
+MAILNAME {{ ansible_nodename }}
+{% if dragonfly_mta_insecure %}
+INSECURE
+{% endif %}
+{% if dragonfly_mta_masquerade %}
+MASQUERADE {{ dragonfly_mta_masquerade }}
+{% endif %}

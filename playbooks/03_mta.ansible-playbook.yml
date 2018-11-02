@@ -1,0 +1,39 @@
+---
+- name: Install DragonFly Mail Transfer Agent (MTA)
+  package: name=dma state=latest
+
+- name: Configure DragonFly MTA
+  template:
+    src: ../templates/dragonfly-mta-dma.conf.j2
+    dest: /etc/dma/dma.conf
+    owner: root
+    group: mail
+    mode: "u=rw,g=r,o="
+
+- name: Configure DragonFly MTA Authentication
+  template:
+    src: ../templates/dragonfly-mta-auth.conf.j2
+    dest: /etc/dma/auth.conf
+    owner: root
+    group: mail
+    mode: "u=rw,g=r,o="
+  when: dragonfly_mta_user is defined or dragonfly_mta_password is defined
+
+- name: Configure DragonFly MTA alias to forward all messages
+  template:
+    src: ../templates/dragonfly-mta-aliases.j2
+    dest: /etc/aliases
+    owner: root
+    group: root
+    mode: 0644
+    backup: yes
+  when: dragonfly_mta_alias_mail is defined
+
+- name: Install additional mail utilities
+  package: name=mailutils state=latest
+
+- name: Open SMTP port(s)
+  ufw: >
+    rule=allow
+    port={{ dragonfly_mta_port }}
+    proto=tcp
