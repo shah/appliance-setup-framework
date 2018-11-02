@@ -1,6 +1,6 @@
 SMARTHOST {{ dragonfly_mta_smarthost }}
-{% if dragonfly_mta_port %}
-PORT {{ dragonfly_mta_port }}
+{% if dragonfly_mta_smarthost_port %}
+PORT {{ dragonfly_mta_smarthost_port }}
 {% endif %}
 {% if dragonfly_mta_securetransfer %}
 SECURETRANSFER
