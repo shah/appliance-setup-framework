@@ -27,6 +27,5 @@ samba_shares:
     group: "{{ appliance_admin_user }}"
 
 dragonfly_mta_insecure: false
-dragonfly_mta_port: 25
 dragonfly_mta_securetransfer: true
 dragonfly_mta_starttls: true
