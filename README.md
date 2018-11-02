@@ -70,7 +70,7 @@ The ASF comes with everything you need to run a secure, minimally hardended, app
 * Ansible and ARA
 * Docker
 * osQuery
-* SMTP via Postfix and mailutils
+* SMTP relay via DragonFly MTA (dma) and mailutils
 * Python and PIP
 * Samba with admin home available as a share
 * prometheus-node-exporter
