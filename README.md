@@ -65,7 +65,7 @@ The ASF comes with everything you need to run a secure, minimally hardended, app
 * OpenSSH
 * ZSH with Oh My ZSH! and Antigen
 * Ansible and ARA
-* Docker with [Container Configuration Framework](/shah/container-config-framework)
+* Docker with [Container Configuration Framework](/shah/container-config-framework) and [docker-gen](https://github.com/jwilder/docker-gen)
 * osQuery
 * Outbound SMTP relay via DragonFly MTA (dma) and mailutils, no incoming e-mails are allowed though
 * Python and PIP
