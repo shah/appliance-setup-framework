@@ -31,17 +31,14 @@ After Ubuntu operating system installation is completed, log into the server as 
 
 Install the following core utilities:
 
-    sudo apt update && sudo apt install net-tools curl -y
-
-## Bootstrap the appliance
-
+    sudo apt update && sudo apt install net-tools curl -y && \
     curl https://raw.githubusercontent.com/shah/appliance-setup-framework/master/bin/bootstrap.sh | bash
 
 After bootstrap.sh is complete, exit the shell.
 
 ## Review your specific appliance variables
 
-Login as the *admin user* and review the appliance.secrets.conf.yml file to customize it for your installation. 
+After you've exited, log back in as the *admin user* and review the appliance.secrets.conf.yml file to customize it for your installation. 
 
     cd /etc/appliance-setup-framework/conf
     sudo vi appliance.secrets.conf.yml
