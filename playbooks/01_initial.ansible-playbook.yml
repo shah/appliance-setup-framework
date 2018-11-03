@@ -13,6 +13,9 @@
     - name: Install jsonnet
       file: state=link src={{appliance_setup_path}}/bin/jsonnet-v0.11.2 dest=/usr/bin/jsonnet mode=a+x force=yes
 
+    - name: Install docker-gen
+      file: state=link src={{appliance_setup_path}}/bin/docker-gen-v0.7.4 dest=/usr/bin/docker-gen mode=a+x force=yes
+
     - name: Install Prometheus osquery_exporter binary
       file: state=link src={{appliance_setup_path}}/bin/prometheus-osquery-exporter-vHEAD,f719795,Jan2017 dest=/usr/bin/prometheus-osquery-exporter mode=a+x force=yes
 
