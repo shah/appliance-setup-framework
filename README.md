@@ -29,7 +29,7 @@ NOTE: the user you create is called the *admin user* below.
 
 After Ubuntu operating system installation is completed, log into the server as the *admin user* (see above).
 
-Install the following core utilities:
+Bootstrap the core utilities:
 
     sudo apt update && sudo apt install net-tools curl -y && \
     curl https://raw.githubusercontent.com/shah/appliance-setup-framework/master/bin/bootstrap.sh | bash
