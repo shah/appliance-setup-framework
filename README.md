@@ -47,7 +47,7 @@ The **appliance.secrets.conf-tmpl.yml** file is a template (sample), and the **a
 
 If you have any custom playbooks, add them to /etc/appliance-setup-framework/playbooks. The bin/setup.sh utility will run all numbered playbooks in numerical order. 
 
-Resume the setup:
+## Install software
 
     cd /etc/appliance-setup-framework
     bash bin/setup.sh
@@ -65,7 +65,7 @@ The ASF comes with everything you need to run a secure, minimally hardended, app
 * OpenSSH
 * ZSH with Oh My ZSH! and Antigen
 * Ansible and ARA
-* Docker
+* Docker with [Container Configuration Framework](/shah/container-config-framework)
 * osQuery
 * Outbound SMTP relay via DragonFly MTA (dma) and mailutils, no incoming e-mails are allowed though
 * Python and PIP
@@ -73,3 +73,7 @@ The ASF comes with everything you need to run a secure, minimally hardended, app
 * prometheus-node-exporter
 * prometheus-osquery-exporter
 * htop, jsonnet, jq
+
+## TODO
+
+* ARA doesn't seem to be recording Ansible Playbook output, need to check out why
