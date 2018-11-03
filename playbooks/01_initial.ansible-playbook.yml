@@ -21,7 +21,7 @@
 
     - name: Install Prometheus osquery_exporter systemd service
       copy: 
-        src: ../conf/prometheus-osquery-exporter.service
+        src: ../templates/prometheus-osquery-exporter.service
         dest: /etc/systemd/system/prometheus-osquery-exporter.service
 
     - name: Enable prometheus-osquery-exporter service and make sure it's running
