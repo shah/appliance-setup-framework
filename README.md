@@ -29,7 +29,7 @@ NOTE: the user you create is called the *admin user* below.
 
 After Ubuntu operating system installation is completed, log into the server as the *admin user* (see above).
 
-Install the following core utilities:
+Bootstrap the core utilities:
 
     sudo apt update && sudo apt install net-tools curl -y && \
     curl https://raw.githubusercontent.com/shah/appliance-setup-framework/master/bin/bootstrap.sh | bash
@@ -65,7 +65,7 @@ The ASF comes with everything you need to run a secure, minimally hardended, app
 * OpenSSH
 * ZSH with Oh My ZSH! and Antigen
 * Ansible and ARA
-* Docker with [Container Configuration Framework](/shah/container-config-framework)
+* Docker with [Container Configuration Framework](/shah/container-config-framework) and [docker-gen](https://github.com/jwilder/docker-gen)
 * osQuery
 * Outbound SMTP relay via DragonFly MTA (dma) and mailutils, no incoming e-mails are allowed though
 * Python and PIP
