@@ -38,12 +38,12 @@ After bootstrap.sh is complete, exit the shell.
 
 ## Review your specific appliance variables
 
-After you've exited, log back in as the *admin user* and review the appliance.secrets.conf.yml file to customize it for your installation. 
+After you've exited, log back in as the *admin user* and review the appliance.secrets.ansible-vars.yml file to customize it for your installation. 
 
     cd /etc/appliance-setup-framework/conf
-    sudo vi appliance.secrets.conf.yml
+    sudo vi appliance.secrets.ansible-vars.yml
 
-The **appliance.secrets.conf-tmpl.yml** file is a template (sample), and the **appliance.secrets.conf.yml** is what will be used by the Ansible and related setup utilities.
+The **appliance.secrets-tmpl.ansible-vars.yml** file is a template (sample), and the **appliance.secrets.ansible-vars.yml** is what will be used by the Ansible and related setup utilities.
 
 If you have any custom playbooks, add them to /etc/appliance-setup-framework/playbooks. The bin/setup.sh utility will run all numbered playbooks in numerical order. 
 
