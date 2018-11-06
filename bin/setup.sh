@@ -25,3 +25,12 @@ title "Run all numbered playbooks for $(whoami)"
 for playbook in `ls $PLAYBOOKS_SRC/*.ansible-playbook.yml | egrep "^$PLAYBOOKS_SRC/[0-9]" | sort -V`; do 
     sudo ansible-playbook -i "localhost," -c local $playbook --extra-vars="asf_user=$(whoami)"
 done;
+
+echo "****************************************************"
+echo "** ASF setup process is complete.                 **"
+echo "** ---------------------------------------------- **"
+echo "** Please reboot and then the appliance will be   **"
+echo "** ready for use:                                 **"
+echo "**                                                **"
+echo "** > sudo reboot                                  **"
+echo "****************************************************"
