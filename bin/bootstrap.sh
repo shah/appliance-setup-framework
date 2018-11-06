@@ -21,7 +21,7 @@ title "Download distribution into $ASF_HOME"
 sudo git clone --recurse https://github.com/shah/appliance-setup-framework $ASF_HOME
 
 title "Prepare appliance secrets configuration"
-sudo cp $ASF_HOME/conf/appliance.secrets.conf-tmpl.yml $ASF_HOME/conf/appliance.secrets.conf.yml
+sudo cp $ASF_HOME/conf/appliance.secrets-tmpl.ansible-vars.yml $ASF_HOME/conf/appliance.secrets.ansible-vars.yml
 
 title "Provision ARA setup playbook"
 sudo ansible-playbook -i "localhost," -c local $ASF_HOME/playbooks/ara.ansible-playbook.yml

@@ -2,8 +2,8 @@
 - name: DragonFly Mail Transfer Agent (MTA)
   hosts: all
   vars_files:
-    - ../conf/appliance.secrets.conf.yml
-    - ../conf/appliance.common.conf.yml
+    - ../conf/appliance.secrets.ansible-vars.yml
+    - ../conf/appliance.common.ansible-vars.yml
   tasks:
     - name: Install DragonFly Mail Transfer Agent (MTA)
       package: name=dma state=latest

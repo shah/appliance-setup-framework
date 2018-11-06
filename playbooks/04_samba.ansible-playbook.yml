@@ -2,8 +2,8 @@
 - name: Appliance Samba
   hosts: all
   vars_files:
-    - ../conf/appliance.secrets.conf.yml
-    - ../conf/appliance.common.conf.yml
+    - ../conf/appliance.secrets.ansible-vars.yml
+    - ../conf/appliance.common.ansible-vars.yml
     
   roles:
     - bertvv.samba
