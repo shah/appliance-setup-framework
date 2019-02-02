@@ -7,7 +7,7 @@
   tasks:
     - name: Install standard packages
       apt:
-        name: ['htop', 'tree', 'jq', 'fail2ban', 'vim', 'mosh', 'ufw', 'prometheus-node-exporter', 'python-pip', 'inetutils-traceroute']
+        name: ['htop', 'tree', 'jq', 'fail2ban', 'vim', 'mosh', 'ufw', 'prometheus-node-exporter', 'python-pip', 'inetutils-traceroute', 'iperf']
         update_cache: yes
 
     - name: Install jsonnet
