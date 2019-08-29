@@ -15,6 +15,9 @@
 
     - name: Install docker-gen
       file: state=link src={{appliance_setup_path}}/bin/docker-gen-v0.7.4 dest=/usr/bin/docker-gen mode=a+x force=yes
+    
+    - name: Install Rancher CLI   
+      file: state=Link src={{appliance_setup_path}}/bin/rancher dest=/usr/bin/rancher mode=a+x force=yes
 
     - name: Install Prometheus osquery_exporter binary
       file: state=link src={{appliance_setup_path}}/bin/prometheus-osquery-exporter-vHEAD,f719795,Jan2017 dest=/usr/bin/prometheus-osquery-exporter mode=a+x force=yes
