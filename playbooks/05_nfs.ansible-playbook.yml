@@ -1,0 +1,26 @@
+- name: Appliance NFS
+  hosts: all
+  vars_files:
+    - ../conf/appliance.secrets.ansible-vars.yml
+    - ../conf/appliance.common.ansible-vars.yml
+  tasks:
+    #check if params are invalid then abort below all tasks.  
+    - name: 'Checking NSF Feature Flag' 
+      fail: msg="NSF Feature Flag is disabled"
+      with_items: "{{ samba_netbios_name }}"
+
+    - name: Create mountable directory
+      file: path=/mnt/nfs state=directory mode=777 owner=nobody group=nogroup
+
+    - name: Ensure NFS utilities are installed.
+      apt: name={{ item }} state=installed update_cache=yes
+      with_items:
+        - nfs-common
+        - nfs-kernel-server
+
+    - name: Update exports
+      lineinfile: path=/etc/exports line="/mnt/nfs {{ item }}(rw,sync,no_subtree_check,no_root_squash)"  state=present
+      with_items: "{{nfs_server_ip }}"
+
+    - name: restart nfs server
+      service: name=nfs-kernel-server state=restarted

@@ -17,6 +17,10 @@ sudo ansible-galaxy install viasite-ansible.zsh
 sudo ansible-galaxy install robertdebock.ara
 
 export ASF_HOME=/etc/appliance-setup-framework
+
+export ASF_FF_SETUP_K8s= ${ASF_FF_SETUP_K8s:-True}  
+export ASF_FF_SETUP_NSF= ${ASF_FF_SETUP_NSF:-True}
+
 title "Download distribution into $ASF_HOME"
 sudo git clone --recurse https://github.com/shah/appliance-setup-framework $ASF_HOME
 
@@ -28,6 +32,7 @@ sudo ansible-playbook -i "localhost," -c local $ASF_HOME/playbooks/ara.ansible-p
 
 title "Provision ZSH setup playbook for $(whoami)"
 sudo ansible-playbook -i "localhost," -c local $ASF_HOME/playbooks/zsh.ansible-playbook.yml --extra-vars="zsh_user=$(whoami)"
+
 
 echo "****************************************************"
 echo "** ASF boostrapping process is complete.          **"
