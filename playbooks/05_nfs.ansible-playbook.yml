@@ -5,10 +5,11 @@
     - ../conf/appliance.common.ansible-vars.yml
   tasks:
     #check if params are invalid then abort below all tasks.  
-    - name: 'Checking NSF Feature Flag' 
-      fail: msg="NSF Feature Flag is disabled"
-      with_items: "{{ samba_netbios_name }}"
-
+    - name: Check NFS flag enabled
+      fail: 
+        msg: "NSF Feature Flag is disabled"
+      when: nfs_status != "True"      
+    
     - name: Create mountable directory
       file: path=/mnt/nfs state=directory mode=777 owner=nobody group=nogroup
 

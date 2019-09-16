@@ -23,7 +23,7 @@ export ASF_HOME=/etc/appliance-setup-framework
 export PLAYBOOKS_SRC=$ASF_HOME/playbooks
 title "Run all numbered playbooks for $(whoami)"
 for playbook in `ls $PLAYBOOKS_SRC/*.ansible-playbook.yml | egrep "^$PLAYBOOKS_SRC/[0-9]" | sort -V`; do 
-    sudo ansible-playbook -i "localhost," -c local $playbook --extra-vars="asf_user=$(whoami)"
+	sudo ansible-playbook -i "localhost," -c local $playbook --extra-vars="asf_user=$(whoami) nfs_status=$(echo $ASF_FF_SETUP_NSF) k8s_status=$(echo $ASF_FF_SETUP_K8s)"
 done;
 
 echo "****************************************************"
