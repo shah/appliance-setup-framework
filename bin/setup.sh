@@ -15,6 +15,7 @@ sudo apt-get install -y osquery
 title "Install roles from Ansible Galaxy"
 sudo ansible-galaxy install geerlingguy.docker
 sudo ansible-galaxy install bertvv.samba
+sudo ansible-galaxy install geerlingguy.kubernetes
 
 title "Finish setting up shell"
 zsh -i -c setupsolarized dircolors.256dark

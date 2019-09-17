@@ -1,0 +1,18 @@
+- name: Appliance K8s
+  hosts: all
+  vars_files:
+    - ../conf/appliance.secrets.ansible-vars.yml
+    - ../conf/appliance.common.ansible-vars.yml
+  tasks:
+    #check if params are invalid then abort below all tasks.
+    - name: Check k8s flag enabled
+      fail:
+        msg: "k8s Feature Flag is disabled"
+      when: k8s_status != "True"
+    
+    - name: Install k8s dependencies
+      include_role:
+        name: geerlingguy.kubernetes        
+
+    - name: Download rancher cli
+      file: state=link src={{appliance_setup_path}}/bin/crancher dest=/usr/bin/rancher mode=a+x force=yes  
