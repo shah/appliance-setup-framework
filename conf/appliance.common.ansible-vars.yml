@@ -10,6 +10,7 @@ samba_load_homes: false
 samba_load_printers: false
 samba_create_varwww_symlinks: false
 
+
 samba_map_to_guest: Never
 samba_log: /var/log/samba.log
 samba_log_size: 60000

@@ -18,8 +18,8 @@ sudo ansible-galaxy install robertdebock.ara
 
 export ASF_HOME=/etc/appliance-setup-framework
 
-export ASF_FF_SETUP_K8s= ${ASF_FF_SETUP_K8s:-True}  
-export ASF_FF_SETUP_NSF= ${ASF_FF_SETUP_NSF:-True}
+export ASF_FF_SETUP_K8s=${ASF_FF_SETUP_K8s:-True}  
+export ASF_FF_SETUP_NSF=${ASF_FF_SETUP_NSF:-True}
 
 title "Download distribution into $ASF_HOME"
 sudo git clone --recurse https://github.com/shah/appliance-setup-framework $ASF_HOME
