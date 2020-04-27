@@ -1,0 +1,15 @@
+- name: Install Deno.
+  hosts: all
+  tasks:
+    - name: Downloaing deno install.sh script.
+      get_url:
+        url: https://deno.land/x/install/install.sh
+        dest: /tmp/install.sh
+
+    - name: Run install.sh script.
+      command: bash /tmp/install.sh
+
+    - name: Add deno executable to .bashrc
+      shell: |
+        echo 'export DENO_INSTALL="~/.deno"
+        export PATH="$DENO_INSTALL/bin:$PATH"' >> $HOME/.bashrc
